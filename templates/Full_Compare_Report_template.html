@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<title>Generic Comparison Report :: {{ report_title}}</title>
+	</head>
+	<body>
+	<h2>Generic Comparison Report :: {{ report_title}}</h2>
+		<h4>PDF Format</h4>
+		Old Schema : <a href="{{pdf_old}}">{{pdf_old}}</a><br>
+		New Schema : <a href="{{pdf_new}}">{{pdf_new}}</a>
+		<br>
+		Links to batch files:<br>
+		{% for bat in pdf_bats %}	
+			<a href="{{bat}}">{{bat}}</a><br>
+		{% endfor %}
+		<br>
+		Links to html reports:<br>
+		{% for html in pdf_htmls %}	
+			<a href="{{html}}">{{html}}</a><br>
+		{% endfor %}
+		
+		<h4>Excel Format</h4>
+		Old Schema : <a href="{{excel_old}}">{{excel_old}}</a><br>
+		New Schema : <a href="{{excel_new}}">{{excel_new}}</a>
+		<br>
+		Links to batch files:<br>
+		{% for bat in xls_bats %}	
+			<a href="{{bat}}">{{bat}}</a><br>
+		{% endfor %}
+		<br>
+		Links to html reports:<br>
+		{% for html in xls_htmls %}	
+			<a href="{{html}}">{{html}}</a><br>
+		{% endfor %}
+				
+		<h4>Power Point Format</h4>
+		Old Schema : <a href="{{ppt_old}}">{{ppt_old}}</a><br>
+		New Schema : <a href="{{ppt_new}}">{{ppt_new}}</a>
+		<br>
+		Links to batch files:<br>
+		{% for bat in ppt_bats %}	
+			<a href="{{bat}}">{{bat}}</a><br>
+		{% endfor %}
+		<br>
+		Links to html reports:<br>
+		{% for html in ppt_htmls %}	
+			<a href="{{html}}">{{html}}</a><br>
+		{% endfor %}
+		
+		<h4>Word Format</h4>
+		Old Schema : <a href="{{doc_old}}">{{doc_old}}</a><br>
+		New Schema : <a href="{{doc_new}}">{{doc_new}}</a>
+		<br>
+		Links to batch files:<br>
+		{% for bat in doc_bats %}	
+			<a href="{{bat}}">{{bat}}</a><br>
+		{% endfor %}
+		<br>
+		Links to html reports:<br>
+		{% for html in doc_htmls %}	
+			<a href="{{html}}">{{html}}</a><br>
+		{% endfor %}
+		
+	</body>
+</html>
