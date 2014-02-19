@@ -1,0 +1,6 @@
+﻿picture-report &
+ layout:side-by-side &
+ options:ignore-unimportant &
+ output-to:"%3" &
+ output-options:html-color &
+ "%1" "%2"
