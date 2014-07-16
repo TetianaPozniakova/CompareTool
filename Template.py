@@ -6,7 +6,7 @@ except ImportError:
     raise ImportError("Please make sure Jinja is installed.")
 
 
-DEFAULT_TEMPLATE = 'Full_Compare_Report_template.html'
+DEFAULT_TEMPLATE = 'templates\\Full_Compare_Report_template.html'
 DEFAULT_TEMPLATE_FOLDER = '.'
 
 

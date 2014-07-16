@@ -6,8 +6,7 @@ BC_IMAGES = "BcImages"
 
 
 def split_by_extension(path):
-    extension = path.split(".")[-1]
-    full_name = path.replace(extension, '')
+    full_name, extension = path.rsplit(".", 1)
     return full_name, extension
 
 

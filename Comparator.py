@@ -1,5 +1,5 @@
 from os import walk
-from os.path import isfile, join
+from os.path import isfile, join, normpath
 import subprocess
 
 from Convertors import convert_to_images
@@ -25,7 +25,7 @@ class Comparator:
     def __init__(self, report_folder_path, compare_script_folder=DEFAULT_COMPARE_SCRIPT_FOLDER):
         self.__text_compare_settings = self.__build_path__(compare_script_folder, TEXT_COMPARE_SETTINGS)
         self.__picture_compare_settings = self.__build_path__(compare_script_folder, PICTURE_COMPARE_SETTINGS)
-        self.__report_folder_path = report_folder_path
+        self.__report_folder_path = normpath(report_folder_path)
         self.compare_report = None
 
     def compare(self):
@@ -65,7 +65,6 @@ class Comparator:
                                 doc_results.bat_list.append(bat_name)
                                 doc_results.html_list.append(self.compare_report)
 
-
                         elif report.endswith(FileFormat.EXCEL):
                             xls_results.old_report = etalon_report
                             xls_results.new_report = report_path
@@ -87,29 +86,29 @@ class Comparator:
                             doc_results.bat_list.append(bat_name)
                             doc_results.html_list.append(self.compare_report)
 
-            template_vars = {
-                "report_title": report_under_test.report_title,
-                "pdf_old": pdf_results.old_report,
-                "pdf_new": pdf_results.new_report,
-                "pdf_bats": pdf_results.bat_list,
-                "pdf_htmls": pdf_results.html_list,
+                template_vars = {
+                    "report_title": report_under_test.report_title,
+                    "pdf_old": pdf_results.old_report,
+                    "pdf_new": pdf_results.new_report,
+                    "pdf_bats": pdf_results.bat_list,
+                    "pdf_htmls": pdf_results.html_list,
 
-                "excel_old": xls_results.old_report,
-                "excel_new": xls_results.new_report,
-                "xls_bats": xls_results.bat_list,
-                "xls_htmls": xls_results.html_list,
+                    "excel_old": xls_results.old_report,
+                    "excel_new": xls_results.new_report,
+                    "xls_bats": xls_results.bat_list,
+                    "xls_htmls": xls_results.html_list,
 
-                "ppt_old": ppt_results.old_report,
-                "ppt_new": ppt_results.new_report,
-                "ppt_bats": ppt_results.bat_list,
-                "ppt_htmls": ppt_results.html_list,
+                    "ppt_old": ppt_results.old_report,
+                    "ppt_new": ppt_results.new_report,
+                    "ppt_bats": ppt_results.bat_list,
+                    "ppt_htmls": ppt_results.html_list,
 
-                "doc_old": doc_results.old_report,
-                "doc_new": doc_results.new_report,
-                "doc_bats": doc_results.bat_list,
-                "doc_htmls": doc_results.html_list,
-            }
-            Template(template_vars, dirname, report_under_test.report_title).create_template()
+                    "doc_old": doc_results.old_report,
+                    "doc_new": doc_results.new_report,
+                    "doc_bats": doc_results.bat_list,
+                    "doc_htmls": doc_results.html_list,
+                }
+                Template(template_vars, dirname, report_under_test.report_title).create_template()
 
     def __run_bcomp__(self, report_path, etalon_report, compare_settings):
         full_name, extension = split_by_extension(report_path)

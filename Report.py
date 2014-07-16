@@ -1,4 +1,4 @@
-from os.path import basename, dirname
+from os.path import basename, dirname, normpath
 
 
 class Report:
@@ -7,5 +7,4 @@ class Report:
 
     @staticmethod
     def get_report_name(report_folder):
-        return basename(dirname(report_folder))
-
+        return basename(dirname(normpath(report_folder)))
